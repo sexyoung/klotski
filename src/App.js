@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import style from './App.module.scss';
+import { useState } from "react";
+import {
+  Game,
+  Square,
+} from "components";
 
 function App() {
+
+  const [ len, setLen ] = useState(4);
+
+  const handleChange = ({ target }) => {
+    setLen(+target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.App}>
+      <select value={len} onChange={handleChange}>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <Square>
+        <Game {...{ len }} />
+      </Square>
     </div>
   );
 }

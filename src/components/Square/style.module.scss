@@ -1,0 +1,19 @@
+.body, .square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  min-height: 100vh;
+}
+
+.square {
+  width: 100vmin;
+  height: 100vmin;
+}
+
+h1 {
+  font-size: 10vmin;
+  font-family: sans-serif;
+}
