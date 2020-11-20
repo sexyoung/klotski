@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/klotski/static/css/main.dfc5ac58.chunk.css",
+    "main.js": "/klotski/static/js/main.42843077.chunk.js",
+    "main.js.map": "/klotski/static/js/main.42843077.chunk.js.map",
+    "runtime-main.js": "/klotski/static/js/runtime-main.b425cf2a.js",
+    "runtime-main.js.map": "/klotski/static/js/runtime-main.b425cf2a.js.map",
+    "static/js/2.1dd279ff.chunk.js": "/klotski/static/js/2.1dd279ff.chunk.js",
+    "static/js/2.1dd279ff.chunk.js.map": "/klotski/static/js/2.1dd279ff.chunk.js.map",
+    "static/js/3.04a27b1e.chunk.js": "/klotski/static/js/3.04a27b1e.chunk.js",
+    "static/js/3.04a27b1e.chunk.js.map": "/klotski/static/js/3.04a27b1e.chunk.js.map",
+    "index.html": "/klotski/index.html",
+    "static/css/main.dfc5ac58.chunk.css.map": "/klotski/static/css/main.dfc5ac58.chunk.css.map",
+    "static/js/2.1dd279ff.chunk.js.LICENSE.txt": "/klotski/static/js/2.1dd279ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b425cf2a.js",
+    "static/js/2.1dd279ff.chunk.js",
+    "static/css/main.dfc5ac58.chunk.css",
+    "static/js/main.42843077.chunk.js"
+  ]
+}
