@@ -13,6 +13,7 @@ $baseColor: #b88144;
     color: #fff;
     display: flex;
     border-radius: 5px;
+    position: relative;
     align-items: center;
     justify-content: center;
     &:not([data-value='0']) {
@@ -23,5 +24,10 @@ $baseColor: #b88144;
         content: attr(data-value)
       }
     }
+    &.isMoving { transition: transform .2s; }
+    &.left    { transform: translateX(calc(-100% - 7px)); }
+    &.right   { transform: translateX(calc(100% + 7px)); }
+    &.up      { transform: translateY(calc(-100% - 7px)); }
+    &.down    { transform: translateY(calc(100% + 7px)); }
   }
 }
