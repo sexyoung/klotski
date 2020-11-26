@@ -9,18 +9,24 @@ const getAnsMatrix = len => {
   return [...Array(PowLen).keys()].map(i => (i + 1) % PowLen );
 };
 
-const isCanMove = ({ curMatrix, index, len }) => {
-  const ClickValue = curMatrix[index];
-  if(!ClickValue) return false;
-
+const getCanClickList = curMatrix => {
+  const len = Math.sqrt(curMatrix.length);
   const holeIndex = curMatrix.indexOf(0);
   const hiModLen = holeIndex % len;
-
-  const canClickList = [];
+  let canClickList = [];
   for (let i = 0; i < len; i++) {
     canClickList.push(hiModLen + i * len);
     canClickList.push(holeIndex - hiModLen + i);
   }
+  canClickList= canClickList.filter(v => v !== holeIndex);
+  return { holeIndex, canClickList };
+};
+
+const isCanMove = ({ curMatrix, index }) => {
+  const ClickValue = curMatrix[index];
+  if(!ClickValue) return false;
+
+  const { holeIndex, canClickList } = getCanClickList(curMatrix);
   return canClickList.filter(v => v !== holeIndex).includes(index);
 };
 
@@ -43,22 +49,27 @@ export function Game({ len }) {
   const [curMatrix, setCurMatrix] = useState([...AnsMatrix]);
 
   useEffect(() => {
+    // 打亂它！
+    const curMatrix = getAnsMatrix(len);
+    const { canClickList } = getCanClickList(curMatrix);
+    const index = canClickList[~~(Math.random() * canClickList.length)];
+
     setCurMatrix(getAnsMatrix(len));
   }, [len]);
 
   const handleClick = index => {
     if(!isCanMove({ curMatrix, index, len })) return;
+
     const holeIndex = curMatrix.indexOf(0);
     const D = index - holeIndex;
     const STEP = Math.sign(D) * (Math.abs(D) < len ? 1: len);
-    console.log(D);
     direction = D > 0 ?
       Math.abs(D) >= len ? 'up': 'left':
       Math.abs(D) >= len ? 'down': 'right';
     console.log(direction);
     const moveIndexList = [];
     for (let i = holeIndex; i !== index; i+=STEP) {
-      moveIndexList.push(i+STEP);
+      moveIndexList.push(i + STEP);
     }
     setMovingIndex(moveIndexList);
 
@@ -85,7 +96,7 @@ export function Game({ len }) {
             [style[direction]]: movingIndex.includes(index),
           })}
           data-value={curMatrix[index]}
-          onClick={handleClick.bind(this, index)}
+          onTouchStart={handleClick.bind(this, index)}
           style={{ width: `calc(` + DP + ` - 5px)` }}
         />
       )}
