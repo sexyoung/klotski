@@ -7,7 +7,7 @@ import {
 
 function App() {
 
-  const [ len, setLen ] = useState(4);
+  const [ len, setLen ] = useState(3);
 
   const handleChange = ({ target }) => {
     setLen(+target.value);

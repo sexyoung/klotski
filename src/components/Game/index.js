@@ -1,45 +1,14 @@
 import cx from 'classnames';
 import style from './style.module.scss';
 import { useState, useEffect } from 'react';
+import {
+  isCanMove,
+  getAnsMatrix,
+  getCanClickList,
+  swapHoleToIndex,
+} from '../../utils';
 
 let direction = '';
-
-const getAnsMatrix = len => {
-  const PowLen = Math.pow(len, 2);
-  return [...Array(PowLen).keys()].map(i => (i + 1) % PowLen );
-};
-
-const getCanClickList = curMatrix => {
-  const len = Math.sqrt(curMatrix.length);
-  const holeIndex = curMatrix.indexOf(0);
-  const hiModLen = holeIndex % len;
-  let canClickList = [];
-  for (let i = 0; i < len; i++) {
-    canClickList.push(hiModLen + i * len);
-    canClickList.push(holeIndex - hiModLen + i);
-  }
-  canClickList= canClickList.filter(v => v !== holeIndex);
-  return { holeIndex, canClickList };
-};
-
-const isCanMove = ({ curMatrix, index }) => {
-  const ClickValue = curMatrix[index];
-  if(!ClickValue) return false;
-
-  const { holeIndex, canClickList } = getCanClickList(curMatrix);
-  return canClickList.filter(v => v !== holeIndex).includes(index);
-};
-
-const swapHoleToIndex = ({ STEP, curMatrix, index, holeIndex}) => {
-  const tmp = [...curMatrix];
-  let swapIndex = holeIndex + STEP;
-  do {
-    [ tmp[swapIndex], tmp[swapIndex - STEP]] =
-    [ tmp[swapIndex - STEP], tmp[swapIndex]];
-    swapIndex += STEP;
-  } while (tmp[index]);
-  return tmp;
-};
 
 // const isValid
 export function Game({ len }) {
@@ -51,10 +20,15 @@ export function Game({ len }) {
   useEffect(() => {
     // 打亂它！
     const curMatrix = getAnsMatrix(len);
-    const { canClickList } = getCanClickList(curMatrix);
-    const index = canClickList[~~(Math.random() * canClickList.length)];
 
-    setCurMatrix(getAnsMatrix(len));
+    let result = [...curMatrix];
+    for (let i = 0; i < ~~(20 * Math.random()) + 10; i++) {
+      const { canClickList } = getCanClickList(result);
+      const index = canClickList[~~(Math.random() * canClickList.length)];
+      result = swapHoleToIndex({curMatrix: [...result], index});
+    }
+
+    setCurMatrix(result);
   }, [len]);
 
   const handleClick = index => {
@@ -75,12 +49,14 @@ export function Game({ len }) {
 
     setTimeout(() => {
       setMovingIndex([]);
-      setCurMatrix(swapHoleToIndex({
-        STEP,
+      const result = swapHoleToIndex({
         index,
         curMatrix,
-        holeIndex,
-      }));
+      });
+      setCurMatrix(result);
+      if(result.join('') === AnsMatrix.join('')) {
+        alert('win!');
+      }
     }, 200);
   };
 
