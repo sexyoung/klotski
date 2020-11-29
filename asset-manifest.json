@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/klotski/static/css/main.93397f83.chunk.css",
-    "main.js": "/klotski/static/js/main.a7d15754.chunk.js",
-    "main.js.map": "/klotski/static/js/main.a7d15754.chunk.js.map",
+    "main.js": "/klotski/static/js/main.d36375aa.chunk.js",
+    "main.js.map": "/klotski/static/js/main.d36375aa.chunk.js.map",
     "runtime-main.js": "/klotski/static/js/runtime-main.8a8da459.js",
     "runtime-main.js.map": "/klotski/static/js/runtime-main.8a8da459.js.map",
-    "static/js/2.d4872099.chunk.js": "/klotski/static/js/2.d4872099.chunk.js",
-    "static/js/2.d4872099.chunk.js.map": "/klotski/static/js/2.d4872099.chunk.js.map",
+    "static/js/2.3aa0caaf.chunk.js": "/klotski/static/js/2.3aa0caaf.chunk.js",
+    "static/js/2.3aa0caaf.chunk.js.map": "/klotski/static/js/2.3aa0caaf.chunk.js.map",
     "static/js/3.b1002775.chunk.js": "/klotski/static/js/3.b1002775.chunk.js",
     "static/js/3.b1002775.chunk.js.map": "/klotski/static/js/3.b1002775.chunk.js.map",
     "index.html": "/klotski/index.html",
     "static/css/main.93397f83.chunk.css.map": "/klotski/static/css/main.93397f83.chunk.css.map",
-    "static/js/2.d4872099.chunk.js.LICENSE.txt": "/klotski/static/js/2.d4872099.chunk.js.LICENSE.txt"
+    "static/js/2.3aa0caaf.chunk.js.LICENSE.txt": "/klotski/static/js/2.3aa0caaf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8a8da459.js",
-    "static/js/2.d4872099.chunk.js",
+    "static/js/2.3aa0caaf.chunk.js",
     "static/css/main.93397f83.chunk.css",
-    "static/js/main.a7d15754.chunk.js"
+    "static/js/main.d36375aa.chunk.js"
   ]
 }
